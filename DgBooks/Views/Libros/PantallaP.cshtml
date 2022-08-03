@@ -1,0 +1,126 @@
+﻿@model IEnumerable<DgBooksDB.Libro>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>Inicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+    <link href="~/css/pantallla.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="wrapper">
+
+        <header>
+            <div class="nLogo">
+                <a id="logo" href="#home"><img src="~/Images/Logo1.png" alt="Logo Image" /></a>
+            </div>
+            <nav class="main-nav">
+                <a href="@Url.Action("PantallaP", "Libros")">Home</a>
+                <a href="#generos">Generos</a>
+                <a href="#fav">Favoritos</a>
+
+            </nav>
+            <nav class="sub-nav">
+                <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
+                <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
+                <a href="@Url.Action("EditarUsuario", "Usuario", new { id=ViewBag.user.intIdUsuario})">
+                    <i class="fas fa-user"></i>  @ViewBag.user.strNombreUsuario
+                </a>
+                <a href="@Url.Action("index", "Home")"><i class="fas fa-sign-out-alt"></i></a>
+            </nav>
+            
+        </header>
+        <!-- END OF HEADER -->
+
+        <!-- MAIN CONTAINER -->
+        <section class="main-container">
+            <div class="location" id="home">
+                <h1 id="home">Popular en DgBook's'</h1>
+                <div class="box">
+                    @if (Model.Count() > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <a href="@Url.Action("PantallaDetalles", "Libros", new { id = @Html.DisplayFor(modelItem=>item.intIdLibor),
+                                idU =  @ViewBag.user.intIdUsuario})">
+                                <img src="@Html.DisplayFor(modelItem=>item.strLinkImagenLibro)"
+                                     width="210" height="300" alt="Galeria CSS 1" />
+                                <div>
+                                    <h10>@Html.DisplayFor(modelItem => item.NombreLibro)</h10>
+                                </div>
+                            </a>
+                        }
+                    }
+                    else
+                    {
+                        <h4>
+                            <i class="icon-info-sign"></i> Sin registros en la Base de Datos
+                        </h4>
+                    }
+                </div>
+            </div>
+            <h1 id="comedias">Comedias</h1>
+            <div class="box">
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv1.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv2.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv3.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv4.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv5.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv6.PNG?raw=true" alt=""></a>
+
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv7.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv8.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv9.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv10.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv11.PNG?raw=true" alt=""></a>
+                <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/tv12.PNG?raw=true" alt=""></a>
+            </div>
+
+            <!-- END OF MAIN CONTAINER -->
+
+            <!-- LINKS -->
+            <section class="link">
+                <div class="logos">
+                    <a href="#"><i class="fab fa-facebook-square fa-2x logo"></i></a>
+                    <a href="#"><i class="fab fa-instagram fa-2x logo"></i></a>
+                    <a href="#"><i class="fab fa-twitter fa-2x logo"></i></a>
+                    <a href="#"><i class="fab fa-youtube fa-2x logo"></i></a>
+                </div>
+                <div class="sub-links">
+                    <ul>
+                        <li><a href="#">Audio and Subtitles</a></li>
+                        <li><a href="#">Audio Description</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                        <li><a href="#">Media Center</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Legal Notices</a></li>
+                        <li><a href="#">Corporate Information</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </section>
+            <!-- END OF LINKS -->
+            <!-- FOOTER -->
+            <footer>
+                <p>&copy 2022 DgBook's', Inc.</p>
+                <p>UTTT &copy 2022</p>
+            </footer>
+    </div>
+
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>
